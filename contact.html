@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Northline</title>
+  <meta name="description" content="Call Northline dispatch or leave a note for the desk.">
+  <meta name="theme-color" content="#f3efe7">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="contact">
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="top">
+    <div class="utility">
+      <div class="wrap utility-inner">
+        <p class="utility-cities">San Francisco · Los Angeles · Seattle · Portland</p>
+        <p>Local time <span id="desk-clock" class="num">—</span> · <a href="tel:+14155550140">Dispatch 24h · (415) 555-0140</a></p>
+      </div>
+    </div>
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="logo" href="index.html" aria-label="Northline home">
+          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M6.2 26V6h4.1l11.2 13.8V6H25.8v20h-4.1L10.5 12.2V26H6.2z"/></svg>
+          <span>Northline</span>
+          <i class="logo-dot"></i>
+        </a>
+        <nav id="site-nav" class="nav-links" aria-label="Primary">
+          <a href="services.html">Services</a>
+          <a href="booking.html">Booking</a>
+          <a href="about.html">Company</a>
+          <a href="contact.html" aria-current="page">Contact</a>
+        </nav>
+        <div class="nav-end">
+          <a class="btn btn-small btn-ink" href="login.html" data-auth>Member</a>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
+  </div>
+  <main id="main" class="page">
+    <div class="wrap contact-layout">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h1>Call the desk.</h1>
+        <p class="lede" style="margin:14px 0 22px">Dispatch answers all day. The city desks are open weekdays from 8 to 6.</p>
+        <p style="font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);letter-spacing:-0.03em;line-height:1"><a href="tel:+14155550140">(415) 555-0140</a></p>
+        <div class="desk-grid" style="margin-top:28px">
+          <article class="desk">
+            <strong>San Francisco</strong>
+            <p>88 Spear Street, Suite 400</p>
+          </article>
+          <article class="desk">
+            <strong>Los Angeles</strong>
+            <p>515 S Flower Street, Suite 1800</p>
+          </article>
+          <article class="desk">
+            <strong>Seattle</strong>
+            <p>1201 2nd Avenue, Suite 900</p>
+          </article>
+          <article class="desk">
+            <strong>Portland</strong>
+            <p>421 SW 6th Avenue, Suite 300</p>
+          </article>
+        </div>
+      </div>
+      <div>
+        <form id="contact-form" class="login-card">
+          <h2>Leave a note.</h2>
+          <p class="fine">For a trip that should happen today, call. Notes here stay in this browser.</p>
+          <label class="field">
+            <span>Name</span>
+            <input name="name" autocomplete="name" required maxlength="80">
+          </label>
+          <label class="field">
+            <span>Phone <em>optional</em></span>
+            <input name="phone" type="tel" autocomplete="tel" maxlength="24">
+          </label>
+          <label class="field">
+            <span>Topic</span>
+            <select name="topic">
+              <option>New trip</option>
+              <option>Company account</option>
+              <option>A desk visit</option>
+              <option>Something else</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Message</span>
+            <textarea name="message" required maxlength="600" placeholder="Route, time, or what you want the desk to know"></textarea>
+          </label>
+          <button class="btn btn-primary" type="submit">Send note</button>
+        </form>
+        <div id="contact-success" class="success-card" hidden>
+          <h2>The desk has your note.</h2>
+          <p>It is saved in this demo. For a live trip, call <a class="text-link" href="tel:+14155550140">(415) 555-0140</a>.</p>
+          <a class="btn btn-primary" href="booking.html">Plan a trip</a>
+        </div>
+        <div id="saved-notes" hidden>
+          <h2 class="group-label">Notes on this desk</h2>
+          <div id="note-list" class="message-list"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap foot-grid">
+      <div class="foot-brand">
+        <strong>Northline</strong>
+        <p class="fine">Mobility operator for city rides, airports, and company travel.</p>
+        <a href="tel:+14155550140">(415) 555-0140</a>
+        <p class="fine">Dispatch all day</p>
+      </div>
+      <div>
+        <p class="foot-title">Services</p>
+        <div class="foot-links">
+          <a href="service-city.html">City motion</a>
+          <a href="service-airside.html">Airside</a>
+          <a href="service-company.html">Company travel</a>
+          <a href="service-chauffeur.html">Chauffeur</a>
+          <a href="service-intercity.html">Intercity</a>
+        </div>
+      </div>
+      <div>
+        <p class="foot-title">Company</p>
+        <div class="foot-links">
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="booking.html">Booking</a>
+          <a href="account.html">Member desk</a>
+        </div>
+      </div>
+      <div>
+        <p class="foot-title">Desks</p>
+        <div class="foot-links">
+          <span>San Francisco</span>
+          <span>Los Angeles</span>
+          <span>Seattle</span>
+          <span>Portland</span>
+        </div>
+      </div>
+    </div>
+    <div class="wrap legal">
+      <span class="fine">© 2026 Northline</span>
+      <span class="fine">Demo desk — trips stay in this browser.</span>
+    </div>
+  </footer>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

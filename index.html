@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Northline — Mobility operator</title>
+  <meta name="description" content="Northline operates city rides, airport arrivals, chauffeur days, and travel between cities. A fare you see before you ride.">
+  <meta name="theme-color" content="#f3efe7">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="home">
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="top">
+    <div class="utility">
+      <div class="wrap utility-inner">
+        <p class="utility-cities">San Francisco · Los Angeles · Seattle · Portland</p>
+        <p>Local time <span id="desk-clock" class="num">—</span> · <a href="tel:+14155550140">Dispatch 24h · (415) 555-0140</a></p>
+      </div>
+    </div>
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="logo" href="index.html" aria-label="Northline home">
+          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M6.2 26V6h4.1l11.2 13.8V6H25.8v20h-4.1L10.5 12.2V26H6.2z"/></svg>
+          <span>Northline</span>
+          <i class="logo-dot"></i>
+        </a>
+        <nav id="site-nav" class="nav-links" aria-label="Primary">
+          <a href="services.html">Services</a>
+          <a href="booking.html">Booking</a>
+          <a href="about.html">Company</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="nav-end">
+          <a class="btn btn-small btn-ink" href="login.html" data-auth>Member</a>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <main id="main">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow rise">Mobility operator</p>
+          <h1 class="rise rise-2">On time is<br><em>the product.</em></h1>
+          <p class="lede rise rise-3">Northline runs city rides, airport arrivals, and company travel for days with a hard edge. Employed drivers. A fare you see before the wheels move.</p>
+          <div class="hero-actions rise rise-4">
+            <a class="btn btn-primary" href="booking.html">Plan a trip</a>
+            <a class="text-link" href="services.html">See services</a>
+          </div>
+        </div>
+        <div class="hero-art rise rise-3" aria-hidden="true">
+          <svg viewBox="0 0 460 520" fill="none">
+            <g stroke="rgba(23,22,20,0.12)" stroke-width="1">
+              <path d="M20 90H440M20 190H440M20 290H440M20 390H440"/>
+              <path d="M70 30V490M170 30V490M270 30V490M370 30V490"/>
+            </g>
+            <path class="route-line" d="M58 430C92 360 48 318 118 286C188 254 214 210 188 156C162 102 250 86 392 64" stroke="#171614" stroke-width="1.75" pathLength="1"/>
+            <circle cx="58" cy="430" r="5" fill="#171614"/>
+            <circle class="route-dot" cx="392" cy="64" r="6" fill="#E23D12"/>
+            <text class="art-label" x="72" y="454">SFO</text>
+            <text class="art-label" x="292" y="52">Market St</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap composer">
+      <form class="composer-card rise" action="booking.html" method="get">
+        <div class="composer-grid">
+          <label class="field">
+            <span>Service</span>
+            <select id="home-service" name="service" required></select>
+          </label>
+          <label class="field">
+            <span>Pickup</span>
+            <select id="home-from" name="from" data-placeholder="Pickup" required></select>
+          </label>
+          <label class="field">
+            <span>Drop-off</span>
+            <select id="home-to" name="to" data-placeholder="Drop-off" required></select>
+          </label>
+          <label class="field">
+            <span>Date</span>
+            <input id="home-date" name="date" type="date" required>
+          </label>
+          <label class="field">
+            <span>Time</span>
+            <input id="home-time" name="time" type="time" required value="16:40">
+          </label>
+          <button class="btn btn-primary" type="submit">Check fare</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>City motion · Airside · Company travel · Chauffeur · Intercity · Four metros · Dispatch all day · Employed drivers ·&nbsp;</span>
+        <span>City motion · Airside · Company travel · Chauffeur · Intercity · Four metros · Dispatch all day · Employed drivers ·&nbsp;</span>
+      </div>
+    </div>
+
+    <section class="section" id="board">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Dispatch board</p>
+          <h2>How a trip reads on the desk.</h2>
+          <p class="lede">A sample board. Your own trips appear on the member desk after you confirm a fare.</p>
+        </div>
+        <div class="reveal">
+          <div class="board-head"><span>Route</span><span>Cabin</span><span>Status</span><span>ETA</span></div>
+          <div id="board-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="offer" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Services</p>
+          <h2>Five ways we move people.</h2>
+          <p class="lede">Same standard on every service. The cabin is a choice you make while you plan the trip.</p>
+        </div>
+        <div class="service-list reveal">
+          <a class="service-row" href="service-city.html">
+            <span class="service-num">01</span>
+            <div>
+              <h3>City motion</h3>
+              <p>Point to point across the metro, booked ahead or within the hour.</p>
+            </div>
+            <span class="service-go">View</span>
+          </a>
+          <a class="service-row" href="service-airside.html">
+            <span class="service-num">02</span>
+            <div>
+              <h3>Airside</h3>
+              <p>Airport arrivals and departures, with wait time built into the fare.</p>
+            </div>
+            <span class="service-go">View</span>
+          </a>
+          <a class="service-row" href="service-company.html">
+            <span class="service-num">03</span>
+            <div>
+              <h3>Company travel</h3>
+              <p>Guest trips and standing routes on one account for a team.</p>
+            </div>
+            <span class="service-go">View</span>
+          </a>
+          <a class="service-row" href="service-chauffeur.html">
+            <span class="service-num">04</span>
+            <div>
+              <h3>Chauffeur</h3>
+              <p>A driver for the day or the evening, with the route left open.</p>
+            </div>
+            <span class="service-go">View</span>
+          </a>
+          <a class="service-row" href="service-intercity.html">
+            <span class="service-num">05</span>
+            <div>
+              <h3>Intercity</h3>
+              <p>Door to door between San Francisco, Los Angeles, Seattle, and Portland.</p>
+            </div>
+            <span class="service-go">View</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="standard" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">The standard</p>
+          <h2>What every trip is held to.</h2>
+        </div>
+        <div class="principles">
+          <article class="principle reveal">
+            <p class="service-num">01</p>
+            <strong>Punctual</strong>
+            <p>The pickup time is the promise. We quote a fare and a clock, then hold to both.</p>
+          </article>
+          <article class="principle reveal">
+            <p class="service-num">02</p>
+            <strong>Quiet</strong>
+            <p>Cabins are for the call, the notes, or nothing at all. Drivers keep the ride calm.</p>
+          </article>
+          <article class="principle reveal">
+            <p class="service-num">03</p>
+            <strong>Accountable</strong>
+            <p>Every trip stays on your member desk with a driver, a fare, and a status you can cancel.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cabins" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Cabins</p>
+          <h2>Three cabins. One operator.</h2>
+          <p class="lede">You choose the cabin while you plan the trip. The fare updates before you confirm.</p>
+        </div>
+        <div class="cabin-grid">
+          <article class="cabin reveal">
+            <header><h3>City</h3><span class="tag">Everyday</span></header>
+            <p>A calm sedan for one to three. Two large bags.</p>
+            <a class="btn btn-ghost" href="booking.html?cabin=city">Plan with City</a>
+          </article>
+          <article class="cabin reveal">
+            <header><h3>Executive</h3><span class="tag">Most requested</span></header>
+            <p>More quiet, more room, a smoother ride. Two large bags.</p>
+            <a class="btn btn-ink" href="booking.html?cabin=executive">Plan with Executive</a>
+          </article>
+          <article class="cabin reveal">
+            <header><h3>Group</h3><span class="tag">Up to 6</span></header>
+            <p>A van for teams, families, and luggage. Six large bags.</p>
+            <a class="btn btn-ghost" href="booking.html?cabin=group">Plan with Group</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">From the cabin</p>
+          <h2>Notes from riders.</h2>
+        </div>
+        <div class="note-grid">
+          <figure class="note reveal">
+            <blockquote>“The car was at the curb when we landed, delay and all.”</blockquote>
+            <figcaption><b>Priya Shah</b><br>Producer, San Francisco</figcaption>
+          </figure>
+          <figure class="note reveal">
+            <blockquote>“Guest travel for the team sits on one account, with a route the desk already knows.”</blockquote>
+            <figcaption><b>Daniel Okonkwo</b><br>Operations, Los Angeles</figcaption>
+          </figure>
+          <figure class="note reveal">
+            <blockquote>“Quiet enough to take the call between SoMa and the airport.”</blockquote>
+            <figcaption><b>Helen Cho</b><br>Counsel, Seattle</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="band reveal">
+          <p class="eyebrow" style="color:rgba(246,242,234,.7)">Dispatch</p>
+          <h2>Tell the desk the route.<br><em>We’ll hold the time.</em></h2>
+          <p class="lede">San Francisco, Los Angeles, Seattle, and Portland. Plan the trip here, or call and we’ll book it with you.</p>
+          <div class="band-actions">
+            <a class="btn btn-primary" href="booking.html">Plan a trip</a>
+            <a class="btn btn-ghost" href="tel:+14155550140">Call (415) 555-0140</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap foot-grid">
+      <div class="foot-brand">
+        <strong>Northline</strong>
+        <p class="fine">Mobility operator for city rides, airports, and company travel.</p>
+        <a href="tel:+14155550140">(415) 555-0140</a>
+        <p class="fine">Dispatch all day</p>
+      </div>
+      <div>
+        <p class="foot-title">Services</p>
+        <div class="foot-links">
+          <a href="service-city.html">City motion</a>
+          <a href="service-airside.html">Airside</a>
+          <a href="service-company.html">Company travel</a>
+          <a href="service-chauffeur.html">Chauffeur</a>
+          <a href="service-intercity.html">Intercity</a>
+        </div>
+      </div>
+      <div>
+        <p class="foot-title">Company</p>
+        <div class="foot-links">
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="booking.html">Booking</a>
+          <a href="account.html">Member desk</a>
+        </div>
+      </div>
+      <div>
+        <p class="foot-title">Desks</p>
+        <div class="foot-links">
+          <span>San Francisco</span>
+          <span>Los Angeles</span>
+          <span>Seattle</span>
+          <span>Portland</span>
+        </div>
+      </div>
+    </div>
+    <div class="wrap legal">
+      <span class="fine">© 2026 Northline</span>
+      <span class="fine">Demo desk — trips stay in this browser.</span>
+    </div>
+  </footer>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

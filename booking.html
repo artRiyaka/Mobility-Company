@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plan a trip — Northline</title>
+  <meta name="description" content="Quote a Northline fare, choose a cabin, and confirm the trip to your member desk.">
+  <meta name="theme-color" content="#f3efe7">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-page="booking">
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="top">
+    <div class="utility">
+      <div class="wrap utility-inner">
+        <p class="utility-cities">San Francisco · Los Angeles · Seattle · Portland</p>
+        <p>Local time <span id="desk-clock" class="num">—</span> · <a href="tel:+14155550140">Dispatch 24h · (415) 555-0140</a></p>
+      </div>
+    </div>
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="logo" href="index.html" aria-label="Northline home">
+          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M6.2 26V6h4.1l11.2 13.8V6H25.8v20h-4.1L10.5 12.2V26H6.2z"/></svg>
+          <span>Northline</span>
+          <i class="logo-dot"></i>
+        </a>
+        <nav id="site-nav" class="nav-links" aria-label="Primary">
+          <a href="services.html">Services</a>
+          <a href="booking.html" aria-current="page">Booking</a>
+          <a href="about.html">Company</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="nav-end">
+          <a class="btn btn-small btn-ink" href="login.html" data-auth>Member</a>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
+  </div>
+  <main id="main" class="page">
+    <div class="wrap booking-layout">
+      <div>
+        <div id="booking-intro">
+          <p class="eyebrow">Booking</p>
+          <h1>Plan a trip.</h1>
+          <p class="lede" style="margin-top:14px">A fare, a time, and a cabin. Confirm it and the trip lands on your member desk.</p>
+        </div>
+        <noscript><p class="alert">The booking desk in this demo needs JavaScript.</p></noscript>
+        <ol class="progress">
+          <li><button type="button" data-goto="1">Details</button></li>
+          <li><button type="button" data-goto="2">Cabin</button></li>
+          <li><button type="button" data-goto="3">Confirm</button></li>
+        </ol>
+        <form id="booking-form" novalidate>
+          <div id="form-errors" class="alert" role="alert" hidden></div>
+          <section class="step" data-step="1">
+            <h2>Where and when.</h2>
+            <p class="step-intro">Choose the service, the two ends of the ride, and a time at least 45 minutes from now.</p>
+            <div class="form-grid">
+              <label class="field">
+                <span>Service</span>
+                <select id="trip-service" required></select>
+              </label>
+            </div>
+            <div class="form-grid two" style="margin-top:12px">
+              <label class="field">
+                <span>Pickup</span>
+                <select id="trip-from" data-placeholder="Pickup" required></select>
+              </label>
+              <label class="field">
+                <span>Drop-off</span>
+                <select id="trip-to" data-placeholder="Drop-off" required></select>
+              </label>
+            </div>
+            <div class="form-grid two" style="margin-top:12px">
+              <label class="field">
+                <span>Date</span>
+                <input id="trip-date" type="date" required>
+              </label>
+              <label class="field">
+                <span>Time</span>
+                <input id="trip-time" type="time" required>
+              </label>
+            </div>
+            <div class="form-grid two" style="margin-top:12px">
+              <div class="field">
+                <span class="stepper-label">Guests</span>
+                <div class="stepper">
+                  <button type="button" id="guest-minus" aria-label="Fewer guests">−</button>
+                  <b id="guest-count" class="num">1</b>
+                  <button type="button" id="guest-plus" aria-label="More guests">+</button>
+                </div>
+              </div>
+              <div class="field" id="hours-field" hidden>
+                <span class="stepper-label">Hours</span>
+                <div class="stepper">
+                  <button type="button" id="hour-minus" aria-label="Fewer hours">−</button>
+                  <b id="hour-count" class="num">3</b>
+                  <button type="button" id="hour-plus" aria-label="More hours">+</button>
+                </div>
+              </div>
+            </div>
+            <label class="field" id="flight-field" style="margin-top:12px" hidden>
+              <span>Flight number</span>
+              <input id="trip-flight" maxlength="12" placeholder="UA 448" autocomplete="off">
+            </label>
+            <label class="field" style="margin-top:12px">
+              <span>Note for dispatch <em>optional</em></span>
+              <textarea id="trip-notes" maxlength="280" placeholder="Curb, lobby, or a stop along the way"></textarea>
+            </label>
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">Continue</button>
+            </div>
+          </section>
+          <section class="step" data-step="2" hidden>
+            <h2>Choose a cabin.</h2>
+            <p class="step-intro">City and Executive carry three guests. Group carries six. The fare on each card is for this route.</p>
+            <div class="cabin-pick" id="cabin-options"></div>
+            <div class="form-actions">
+              <button class="btn btn-ghost" type="button" id="back-details">Back</button>
+              <button class="btn btn-primary" type="submit">Review fare</button>
+            </div>
+          </section>
+          <section class="step" data-step="3" hidden>
+            <h2>Confirm the fare.</h2>
+            <p class="step-intro">This demo keeps the trip in your browser. No payment is taken.</p>
+            <div class="panel" id="review-copy" style="padding:18px"></div>
+            <div class="form-actions">
+              <button class="btn btn-ghost" type="button" id="back-cabin">Back</button>
+              <button class="btn btn-primary" type="button" id="confirm-trip">Confirm trip</button>
+            </div>
+          </section>
+        </form>
+        <section id="booking-done" class="done" hidden></section>
+      </div>
+      <aside class="fare" id="fare">
+        <p class="eyebrow">Fare</p>
+        <p class="fare-price num" id="fare-price" aria-live="polite">—</p>
+        <p class="fine" id="fare-meta">Add a route to price this trip.</p>
+        <dl id="fare-lines"></dl>
+        <div class="advisories" id="fare-notes"></div>
+        <p class="fine" style="margin-top:14px">The fare you see is the fare you confirm. This demo does not take payment.</p>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap foot-grid">
+      <div class="foot-brand">
+        <strong>Northline</strong>
+        <p class="fine">Mobility operator for city rides, airports, and company travel.</p>
+        <a href="tel:+14155550140">(415) 555-0140</a>
+        <p class="fine">Dispatch all day</p>
+      </div>
+      <div>
+        <p class="foot-title">Services</p>
+        <div class="foot-links">
+          <a href="service-city.html">City motion</a>
+          <a href="service-airside.html">Airside</a>
+          <a href="service-company.html">Company travel</a>
+          <a href="service-chauffeur.html">Chauffeur</a>
+          <a href="service-intercity.html">Intercity</a>
+        </div>
+      </div>
+      <div>
+        <p class="foot-title">Company</p>
+        <div class="foot-links">
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="booking.html">Booking</a>
+          <a href="account.html">Member desk</a>
+        </div>
+      </div>
+      <div>
+        <p class="foot-title">Desks</p>
+        <div class="foot-links">
+          <span>San Francisco</span>
+          <span>Los Angeles</span>
+          <span>Seattle</span>
+          <span>Portland</span>
+        </div>
+      </div>
+    </div>
+    <div class="wrap legal">
+      <span class="fine">© 2026 Northline</span>
+      <span class="fine">Demo desk — trips stay in this browser.</span>
+    </div>
+  </footer>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

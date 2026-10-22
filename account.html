@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your trips — Northline</title>
+  <meta name="description" content="Open and past Northline trips on your member desk.">
+  <meta name="theme-color" content="#f3efe7">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>if(!sessionStorage.getItem("northline.session"))location.replace("login.html?next="+encodeURIComponent("account.html"));</script>
+</head>
+<body data-page="account">
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="top">
+    <div class="utility">
+      <div class="wrap utility-inner">
+        <p class="utility-cities">San Francisco · Los Angeles · Seattle · Portland</p>
+        <p>Local time <span id="desk-clock" class="num">—</span> · <a href="tel:+14155550140">Dispatch 24h · (415) 555-0140</a></p>
+      </div>
+    </div>
+    <header class="nav">
+      <div class="wrap nav-inner">
+        <a class="logo" href="index.html" aria-label="Northline home">
+          <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M6.2 26V6h4.1l11.2 13.8V6H25.8v20h-4.1L10.5 12.2V26H6.2z"/></svg>
+          <span>Northline</span>
+          <i class="logo-dot"></i>
+        </a>
+        <nav id="site-nav" class="nav-links" aria-label="Primary">
+          <a href="services.html">Services</a>
+          <a href="booking.html">Booking</a>
+          <a href="about.html">Company</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="nav-end">
+          <a class="btn btn-small btn-ink" href="login.html" data-auth>Member</a>
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
+  </div>
+  <main id="main" class="page">
+    <div class="wrap" id="account-root"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap foot-grid">
+      <div class="foot-brand">
+        <strong>Northline</strong>
+        <p class="fine">Mobility operator for city rides, airports, and company travel.</p>
+        <a href="tel:+14155550140">(415) 555-0140</a>
+        <p class="fine">Dispatch all day</p>
+      </div>
+      <div>
+        <p class="foot-title">Services</p>
+        <div class="foot-links">
+          <a href="service-city.html">City motion</a>
+          <a href="service-airside.html">Airside</a>
+          <a href="service-company.html">Company travel</a>
+          <a href="service-chauffeur.html">Chauffeur</a>
+          <a href="service-intercity.html">Intercity</a>
+        </div>
+      </div>
+      <div>
+        <p class="foot-title">Company</p>
+        <div class="foot-links">
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="booking.html">Booking</a>
+          <a href="account.html">Member desk</a>
+        </div>
+      </div>
+      <div>
+        <p class="foot-title">Desks</p>
+        <div class="foot-links">
+          <span>San Francisco</span>
+          <span>Los Angeles</span>
+          <span>Seattle</span>
+          <span>Portland</span>
+        </div>
+      </div>
+    </div>
+    <div class="wrap legal">
+      <span class="fine">© 2026 Northline</span>
+      <span class="fine">Demo desk — trips stay in this browser.</span>
+    </div>
+  </footer>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
